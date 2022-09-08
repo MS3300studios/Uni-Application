@@ -4,17 +4,27 @@
     {{ 'title.post_list'|trans }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{ asset('css/globalstyles.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/mainstyles.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/showpost.css')}}" rel="stylesheet">
+{% endblock %}
+
+
 {% block body %}
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <h1>{{ 'title.post_list'|trans }}</h1>
     <div class="postIndexTopButtonsContainer">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <div class="global_create_post_button" >
             <i class="fa fa-plus" aria-hidden="true"></i>
             <a href="{{ url('post_create') }}" title="{{ 'title.post_create'|trans }}" class="button marginLeft" style="text-decoration: none">
                 {{ 'title.post_create'|trans }}
             </a>
         </div>
+        {% endif %}
         <div class="global_create_post_button" >
             <i class="fa fa-sort" aria-hidden="true"></i>
             <p>{{ knp_pagination_sortable(pagination, 'post.sortByDate'|trans, 'post.createdAt') }}</p>
@@ -43,6 +53,21 @@
                         <p>{{ 'title.category'|trans }}:</p>
                         <p class="colorYellow">{{ post.postCategory.name }}</p>
                         <p>{{ post.content }}</p>
+                        <div class="centeringDiv">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="{{ url("post_delete", {id: post.id}) }}">
+                                <div class="deleteCommentContainer">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <p>{{ 'info.deletePost'|trans }}</p>
+                                </div>
+                            </a>
+                            <a href="{{ url("post_edit", {id: post.id}) }}">
+                                <div class="deleteCommentContainer">
+                                    <p>{{ 'info.editPost'|trans }}</p>
+                                </div>
+                            </a>
+                            {% endif %}
+                        </div>
                     </div>
                 </a>
                 {% endfor %}

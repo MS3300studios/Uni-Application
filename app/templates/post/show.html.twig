@@ -71,12 +71,14 @@
                         </div>
                         <p class="commentContent">{{ singleComment.content }}</p>
                         <div class="centeringDiv">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <a href="{{ url("comment_delete", {id: singleComment.id}) }}">
                                 <div class="deleteCommentContainer">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                     <p>{{ 'info.deleteComment'|trans }}</p>
                                 </div>
                             </a>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}

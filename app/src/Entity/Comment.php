@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Cascade;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
@@ -32,7 +33,7 @@ class Comment
     private $createdAt;
 
     #[ORM\ManyToOne(targetEntity: Post::class, fetch: 'EXTRA_LAZY')]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\JoinColumn(nullable: true, onDelete: "CASCADE")]
     private ?Post $Post = null;
 
     public function getId(): ?int

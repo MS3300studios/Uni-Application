@@ -53,11 +53,8 @@ class PostCategoryController extends AbstractController
         $pagination = $this->postCategoryService->getPaginatedList(
           $request->query->getInt('page', 1)
         );
-        if($this->isGranted('ROLE_ADMIN')) {
-            return $this->render('postCategory/admin.index.html.twig', ['pagination'=>$pagination]);
-        } else {
-            return $this->render('postCategory/index.html.twig', ['pagination' => $pagination]);
-        }
+        
+        return $this->render('postCategory/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**

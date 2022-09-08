@@ -6,6 +6,14 @@
         <source>label.actions</source>
         <target>Actions</target>
       </trans-unit>
+      <trans-unit id="title.Log_in">
+        <source>title.Log_in</source>
+        <target>Log in</target>
+      </trans-unit>
+      <trans-unit id="title.Register">
+        <source>title.Register</source>
+        <target>Register</target>
+      </trans-unit>
       <trans-unit id="label.id">
         <source>label.id</source>
         <target>Id</target>
@@ -90,6 +98,10 @@
         <source>title.category_edit</source>
         <target>Edit category</target>
       </trans-unit>
+      <trans-unit id="info.editPost">
+        <source>info.editPost</source>
+        <target>Edit post</target>
+      </trans-unit>
       <trans-unit id="action.delete">
         <source>action.delete</source>
         <target>Delete</target>
@@ -98,10 +110,10 @@
         <source>title.category_delete</source>
         <target>Delete category #%id%</target>
       </trans-unit>
-            <trans-unit id="title.postCategory_delete">
-              <source>title.postCategory_delete</source>
-              <target>Delete category %name%</target>
-            </trans-unit>
+      <trans-unit id="title.postCategory_delete">
+        <source>title.postCategory_delete</source>
+        <target>Delete category</target>
+      </trans-unit>
       <trans-unit id="message.deleted_successfully">
         <source>message.deleted_successfully</source>
         <target>Deleted successfully</target>
@@ -178,6 +190,10 @@
         <source>title.adm_panel</source>
         <target>Admin panel</target>
       </trans-unit>
+      <trans-unit id="action.register">
+        <source>action.register</source>
+        <target>register</target>
+      </trans-unit>
       <trans-unit id="title.change_data">
         <source>title.change_data</source>
         <target>Change login data</target>
@@ -206,9 +222,25 @@
         <source>title.post_edit</source>
         <target>Edit post</target>
       </trans-unit>
+      <trans-unit id="action.account_edit">
+        <source>action.account_edit</source>
+        <target>Edit account</target>
+      </trans-unit>
       <trans-unit id="label.go_to_category">
         <source>label.go_to_category</source>
         <target>Go to all posts sorted by category: </target>
+      </trans-unit>
+      <trans-unit id="label.go_to_all_posts">
+        <source>label.go_to_all_posts</source>
+        <target>Go to all posts</target>
+      </trans-unit>
+      <trans-unit id="label.nick">
+        <source>label.nick</source>
+        <target>nick</target>
+      </trans-unit>
+      <trans-unit id="label.go_to_all_categories">
+        <source>label.go_to_all_categories</source>
+        <target>Go to all categories</target>
       </trans-unit>
       <trans-unit id="message.category_contains_posts">
         <source>message.category_contains_posts</source>
@@ -229,6 +261,18 @@
       <trans-unit id="label.password">
         <source>label.password</source>
         <target>Password</target>
+      </trans-unit>
+      <trans-unit id="label.please_sign_in">
+        <source>label.please_sign_in</source>
+        <target>Please sign in</target>
+      </trans-unit>
+      <trans-unit id="info.deletePost">
+        <source>info.deletePost</source>
+        <target>delete post</target>
+      </trans-unit>
+      <trans-unit id="title.account_register">
+        <source>title.account_register</source>
+        <target>registration</target>
       </trans-unit>
       <trans-unit id="info.commentsHeader">
         <source>info.commentsHeader</source>

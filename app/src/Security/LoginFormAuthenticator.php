@@ -32,14 +32,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      *
      * @const string
      */
-    public const LOGIN_ROUTE = 'admin_login';
+    public const LOGIN_ROUTE = 'app_login';
 
     /**
      * Default route.
      *
      * @const string
      */
-    public const DEFAULT_ROUTE = 'post_index';
+    public const DEFAULT_ROUTE = 'hello_index';
 
     /**
      * URL Generator.
@@ -67,7 +67,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      */
     public function supports(Request $request): bool
     {
-        return 'admin_login' === $request->attributes->get('_route')
+        return 'app_login' === $request->attributes->get('_route')
             && $request->isMethod('POST');
     }
 

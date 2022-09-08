@@ -86,6 +86,10 @@
         <source>message.created_successfully</source>
         <target>Stworzono pomyślnie!</target>
       </trans-unit>
+      <trans-unit id="info.editPost">
+        <source>info.editPost</source>
+        <target>Edytuj post</target>
+      </trans-unit>
       <trans-unit id="title.category_edit">
         <source>title.category_edit</source>
         <target>Edytuj kategorię</target>
@@ -94,13 +98,17 @@
         <source>action.delete</source>
         <target>Usuń</target>
       </trans-unit>
+      <trans-unit id="action.register">
+        <source>action.register</source>
+        <target>Zarejestruj</target>
+      </trans-unit>
       <trans-unit id="title.category_delete">
         <source>title.category_delete</source>
         <target>Usuń kategorię #%id%</target>
       </trans-unit>
       <trans-unit id="title.postCategory_delete">
           <source>title.postCategory_delete</source>
-          <target>Usuń kategorię %name%</target>
+          <target>Usuń kategorię</target>
       </trans-unit>
       <trans-unit id="message.deleted_successfully">
         <source>message.deleted_successfully</source>
@@ -154,13 +162,25 @@
         <source>action.edit</source>
         <target>Edytuj</target>
       </trans-unit>
+      <trans-unit id="info.deletePost">
+        <source>info.deletePost</source>
+        <target>usuń post</target>
+      </trans-unit>
+      <trans-unit id="title.account_register">
+        <source>title.account_register</source>
+        <target>rejestracja</target>
+      </trans-unit>
       <trans-unit id="action.login">
         <source>action.login</source>
         <target>Zaloguj się</target>
       </trans-unit>
+      <trans-unit id="label.please_sign_in">
+        <source>label.please_sign_in</source>
+        <target>Proszę się zalogować</target>
+      </trans-unit>
       <trans-unit id="action.logout">
         <source>action.logout</source>
-        <target>Wyloguj się</target>
+        <target>Wyloguj</target>
       </trans-unit>
       <trans-unit id="title.main">
         <source>title.main</source>
@@ -208,11 +228,11 @@
       </trans-unit>
       <trans-unit id="label.go_to_category">
         <source>label.go_to_category</source>
-        <target>Go to all posts sorted by category: </target>
+        <target>Posty z kategorii </target>
       </trans-unit>
       <trans-unit id="message.category_contains_posts">
         <source>message.category_contains_posts</source>
-        <target>Category is assigned to the post!</target>
+        <target>Kategoria jest przypisana do postu!</target>
       </trans-unit>
       <trans-unit id="message.changed_successfully">
         <source>message.changed_successfully</source>
@@ -220,47 +240,71 @@
       </trans-unit>
       <trans-unit id="action.back">
         <source>action.back</source>
-        <target>Go back</target>
+        <target>Wróć</target>
+      </trans-unit>
+      <trans-unit id="label.go_to_all_posts">
+        <source>label.go_to_all_posts</source>
+        <target>Wszystkie posty</target>
+      </trans-unit>
+      <trans-unit id="label.go_to_all_categories">
+        <source>label.go_to_all_categories</source>
+        <target>Wszystkie kategorie</target>
+      </trans-unit>
+      <trans-unit id="action.account_edit">
+        <source>action.account_edit</source>
+        <target>Edytuj konto</target>
       </trans-unit>
       <trans-unit id="post.sortByDate">
         <source>post.sortByDate</source>
-        <target>Sort by date</target>
+        <target>Sortuj po dacie</target>
+      </trans-unit>
+      <trans-unit id="label.nick">
+        <source>label.nick</source>
+        <target>Nick</target>
       </trans-unit>
       <trans-unit id="label.password">
         <source>label.password</source>
-        <target>Password</target>
+        <target>Hasło</target>
+      </trans-unit>
+      <trans-unit id="title.Log_in">
+        <source>title.Log_in</source>
+        <target>Zaloguj</target>
+      </trans-unit>
+      <trans-unit id="title.Register">
+        <source>title.Register</source>
+        <target>Zarejestruj</target>
       </trans-unit>
       <trans-unit id="info.commentsHeader">
         <source>info.commentsHeader</source>
-        <target>Comments</target>
+        <target>Komentarze</target>
       </trans-unit>
       <trans-unit id="info.deleteComment">
         <source>info.deleteComment</source>
-        <target>Delete comment</target>
+        <target>Usuń komentarz</target>
       </trans-unit>
       <trans-unit id="action.sign_in">
         <source>action.sign_in</source>
-        <target>Log in</target>
+        <target>Zaloguj</target>
       </trans-unit>
       <trans-unit id="action.show_filtered">
         <source>action.show_filtered</source>
-        <target>Show posts</target>
+        <target>Pokaż posty</target>
       </trans-unit>
             <trans-unit id="message.category_contains_tasks">
               <source>message.category_contains_tasks</source>
-              <target>Cateogry contains task!</target>
+              <target>Kategoria zawiera zadanie</target>
             </trans-unit>
                   <trans-unit id="message.form_error">
                     <source>message.form_error</source>
-                    <target>Form error</target>
+                    <target>Błąd formularza</target>
                   </trans-unit>
       <trans-unit id="label.none">
         <source>label.none</source>
-        <target>Choose category</target>
+        <target>Wybierz kategorię</target>
       </trans-unit>
                 <trans-unit id="message.welcome">
                     <source>message.welcome</source>
-                    <target>Welcome to post service!</target>
+                    <target>Witaj w postach!</target>
                   </trans-unit>
     </body>
   </file>

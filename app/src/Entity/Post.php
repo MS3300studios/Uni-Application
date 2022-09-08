@@ -29,7 +29,7 @@ class Post
     private $createdAt;
 
     #[ORM\ManyToOne(targetEntity: PostCategory::class, fetch: 'EXTRA_LAZY')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
 
     private ?PostCategory $postCategory = null;
     
