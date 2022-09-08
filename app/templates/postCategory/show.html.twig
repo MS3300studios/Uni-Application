@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ postCategory.name }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ postCategory.name }}</h1>
+    {% if postCategory is defined and postCategory|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.id'|trans }}</dt>
+            <dd>{{ postCategory.id }}</dd>
+            <dt>{{ 'label.name'|trans }}</dt>
+            <dd>{{  postCategory.name }}</dd>
+            <dt>{{ 'label.createdAt'|trans }}</dt>
+            <dd>{{ postCategory.createdAt|date('Y/m/d') }}</dd>
+        </dl>
+        <p>
+            <a href="{{ url('postCategory_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.back_to_list'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

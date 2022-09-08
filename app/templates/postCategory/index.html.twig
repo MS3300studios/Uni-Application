@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.post_categories'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.post_categories'|trans }}</h1>
+    <div class="global_create_post_button" >
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <a href="{{ url('postCategory_create') }}" title="{{ 'title.category_create'|trans }}" class="button marginLeft" style="text-decoration: none">
+            {{ 'title.category_create'|trans }}
+        </a>
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+    {% endif %}
+    {% if pagination is defined and pagination.items|length %}
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <div class="categoriesContainer">
+            {% for postCategory in pagination.items %}
+                <div class="oneCategory">
+                    <a href="{{ url('post_index', {'filters.postCategory_id': postCategory.id}) }}">
+                        <p>{{ 'label.go_to_category'|trans }} {{ postCategory.name }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

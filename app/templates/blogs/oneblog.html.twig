@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ post.title }}
+{%  endblock %}
+
+{% block body %}
+    <h1>
+        {{ 'title.record_view'|trans({'%id%': record.id|default('') }) }}
+        {{ post.title }}
+    </h1>
+    {% if post is defined and post|length %}
+        <dl>
+            <dt>Title</dt>
+            <dd>{{ post.title }}</dd>
+            <dt>Content</dt>
+            <dd>{{ post.content }}</dd>
+            <dt>Tags</dt>
+            <dd>{{ post.tags|join(', ') }}</dd>o
+        </dl>
+
+    {% else %}
+    <p>
+        post not found.
+    </p>
+    {% endif %}
+    <p>
+        <a href="{{ url('blog_index') }}" title="back to list"> Back to list </a>
+    </p>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    All blogs
+{% endblock %}
+
+{% block body %}
+
+<div class="allBlogs">
+    <h1 class="allBlogs_mainHeader"> All blogs </h1>
+    {% if blogs is defined and blogs|length %}
+        {% for post in postss %}
+            <div class="allBlogs_blogCard">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <a href="{{ url('one_blog', {'id': post.id}) }}" title="record show"> See more details </a>
+            </div>
+        {% endfor %}
+        </tbody>
+
+    {% else %}
+        <p class="allBlogs_emptyParagraph"> There are no blogs to display </p>
+    {% endif %}
+</div>
+
+{% endblock %}

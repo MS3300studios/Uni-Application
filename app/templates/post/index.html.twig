@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.post_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <h1>{{ 'title.post_list'|trans }}</h1>
+    <div class="postIndexTopButtonsContainer">
+        <div class="global_create_post_button" >
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <a href="{{ url('post_create') }}" title="{{ 'title.post_create'|trans }}" class="button marginLeft" style="text-decoration: none">
+                {{ 'title.post_create'|trans }}
+            </a>
+        </div>
+        <div class="global_create_post_button" >
+            <i class="fa fa-sort" aria-hidden="true"></i>
+            <p>{{ knp_pagination_sortable(pagination, 'post.sortByDate'|trans, 'post.createdAt') }}</p>
+        </div>
+    </div>
+    {% if pagination is defined and pagination.items|length %}
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <div class="allPostsContainerCenteringDiv">
+            <div class="allPostsContainer">
+                {% for post in pagination.items %}
+                <a href="{{ url('post_show', {id: post.id}) }}" title="{{ 'action.view'|trans }}">
+                    <div class="singlePostContainer">
+                        <div class="singlePostTitleDateContainer">
+                            <h2 class="singlePostTitle">{{ post.title }}</h2>
+                            <div class="dateIconInfoContainer">
+                                <div class="dateIcon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <p class="singlePostDate">{{ post.createdAt|date('Y/m/d') }}</p>
+                            </div>
+                        </div>
+                        <p>{{ 'title.category'|trans }}:</p>
+                        <p class="colorYellow">{{ post.postCategory.name }}</p>
+                        <p>{{ post.content }}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.post_create'|trans }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{ asset('css/globalstyles.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/mainstyles.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/createComment.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h1>{{ 'title.comment_create'|trans }}</h1>
+<div class="postCreationContainer">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'action.save'|trans }}" class="submitCreateCategoryButton"/>
+    {{ form_end(form) }}
+</div>
+<p class="backToPostListAnchor">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    <a href="{{ url('post_index') }}" title="{{ 'action.back_to_list'|trans }}" class="marginLeft">
+        {{ 'action.back_to_list'|trans }}
+    </a>
+</p>    
+{% endblock %}

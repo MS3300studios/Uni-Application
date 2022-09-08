@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="{{ asset('css/globalstyles.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/mainstyles.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/showpost.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<p class="backToPostListAnchor">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    <a href="{{ url('post_index') }}" title="{{ 'action.back_to_list'|trans }}" class="marginLeft">
+        {{ 'action.back_to_list'|trans }}
+    </a>
+</p>
+{% if post is defined and post|length %}
+        <div class="postShowContainer">
+            <h1>{{ post.title }}</h1>
+            <div class="postInfoContainerOuterDiv">
+                <div class="postInfoContainer">
+                    <div class="postInfoContainerElement">
+                        <div class="clockIconContainer">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                        <p class="marginLeftSmall postId">{{ post.createdAt|date('Y/m/d') }}</p>
+                    </div>
+                    <div class="postInfoContainerElement">
+                        <p>{{ 'label.id'|trans }}:</p>
+                        <p class="postId">{{ post.id }}</p>
+                    </div>
+                    <div class="postInfoContainerElement">
+                        <p>{{ 'label.category'|trans }}:</p>
+                        <p class="postId">{{ post.postCategory.name }}</p>
+                    </div>
+                </div>
+            </div>
+            <p>{{  post.content  }}</p>
+            <div class="navigation text-center">
+                {{ knp_pagination_render(comment) }}
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 0px 10px 0px 10px;">
+                <h1>{{ 'info.commentsHeader'|trans }}</h1>
+                <div class="global_create_post_button" >
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    <a href="{{ url('comment_create', {id: post.id}) }}" title="{{ 'title.comment_create'|trans }}" class="button marginLeft" style="text-decoration: none">
+                        {{ 'title.comment_create'|trans }}
+                    </a>
+                </div>
+            </div>
+            <div class="commentsContainer">
+                {% for singleComment in comment.items %}
+                    <div class="singleCommentContainer">
+                        <div class="commentInfoContainer">
+                            <div class="commentUserInfo">
+                                <p class="commentNick">{{ singleComment.nick }}</p>
+                                <p class="commentEmail">{{ singleComment.email }}</p>
+                            </div>
+                            <div class="iconDateInfoContainer">
+                                <div class="clockIconContainer">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <p class="commentDate">{{ singleComment.createdAt|date('Y/m/d') }}</p>
+                            </div>
+                        </div>
+                        <p class="commentContent">{{ singleComment.content }}</p>
+                        <div class="centeringDiv">
+                            <a href="{{ url("comment_delete", {id: singleComment.id}) }}">
+                                <div class="deleteCommentContainer">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <p>{{ 'info.deleteComment'|trans }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="navigation text-center">
+                {{ knp_pagination_render(comment) }}
+            </div>
+        </div>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

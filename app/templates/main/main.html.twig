@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Welcome to main page
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/mainstyles.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<article>
+    <a href="/post"><h1>Go to all posts</h1></a>
+    <a href="/postCategory"><h1>Go to all categories:</h1></a>
+</article>
+{% endblock %}
