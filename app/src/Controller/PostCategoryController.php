@@ -40,6 +40,7 @@ class PostCategoryController extends AbstractController
      * Index action.
      *
      * @param Request $request
+     *
      * @return Response
      *
      */
@@ -51,9 +52,9 @@ class PostCategoryController extends AbstractController
     public function index(Request $request): Response
     {
         $pagination = $this->postCategoryService->getPaginatedList(
-          $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1)
         );
-        
+
         return $this->render('postCategory/index.html.twig', ['pagination' => $pagination]);
     }
 
@@ -61,6 +62,7 @@ class PostCategoryController extends AbstractController
      * Show action.
      *
      * @param PostCategory $postCategory
+     *
      * @return Response
      *
      */
@@ -75,7 +77,7 @@ class PostCategoryController extends AbstractController
     {
         return $this->render(
             'postCategory/show.html.twig',
-            ['postCategory'=>$postCategory]
+            ['postCategory' => $postCategory]
         );
     }
 
@@ -83,6 +85,7 @@ class PostCategoryController extends AbstractController
      * Create action.
      *
      * @param Request $request
+     *
      * @return Response
      *
      */
@@ -98,7 +101,7 @@ class PostCategoryController extends AbstractController
         $form = $this->createForm(PostCategoryType::class, $postCategory);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->postCategoryService->save($postCategory);
 
             $this->addFlash(
@@ -111,9 +114,8 @@ class PostCategoryController extends AbstractController
 
         return $this->render(
             'postCategory/create.html.twig',
-            ['form'=>$form->createView()]
+            ['form' => $form->createView()]
         );
-
     }
 
     /**
@@ -121,6 +123,7 @@ class PostCategoryController extends AbstractController
      *
      * @param Request $request
      * @param PostCategory $postCategory
+     *
      * @return Response
      *
      */
@@ -164,6 +167,7 @@ class PostCategoryController extends AbstractController
      *
      * @param Request $request
      * @param postCategory $postCategory
+     *
      * @return Response
      *
      */
@@ -201,5 +205,4 @@ class PostCategoryController extends AbstractController
             ]
         );
     }
-
 }

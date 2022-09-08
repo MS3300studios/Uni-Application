@@ -87,6 +87,7 @@ class PostCategory
      * Setter for Created At.
      *
      * @param DateTimeImmutable $createdAt
+     *
      * @return void
      *
      */
@@ -110,6 +111,7 @@ class PostCategory
      * Setter For Name.
      *
      * @param string $name
+     *
      * @return void
      *
      */
@@ -117,5 +119,4 @@ class PostCategory
     {
         $this->name = $name;
     }
-
 }

@@ -5,6 +5,7 @@ use App\Entity\Post;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+
 /**
  *
  * Class PostService.
@@ -39,8 +40,8 @@ class PostService implements PostServiceInterface
     /**
      * Constructor.
      *
-     * @param PostRepository $postRepository Post repository
-     * @param PaginatorInterface $paginator Paginator interface
+     * @param PostRepository               $postRepository      Post repository
+     * @param PaginatorInterface           $paginator           Paginator interface
      * @param PostCategoryServiceInterface $postCategoryService Post category service interface
      *
      */
@@ -54,14 +55,16 @@ class PostService implements PostServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page
+     * @param int   $page
      * @param array $filters
+     *
      * @return PaginationInterface
      *
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);
+
         return $this->paginator->paginate(
             $this->postRepository->queryAll($filters),
             $page,
@@ -73,6 +76,7 @@ class PostService implements PostServiceInterface
      * Save.
      *
      * @param Post $post
+     *
      * @return void
      *
      */
@@ -85,6 +89,7 @@ class PostService implements PostServiceInterface
      * Delete.
      *
      * @param Post $post
+     *
      * @return void
      *
      */
@@ -97,6 +102,7 @@ class PostService implements PostServiceInterface
      * Prepare filters.
      *
      * @param array $filters
+     *
      * @return array
      *
      */

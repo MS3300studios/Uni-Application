@@ -25,48 +25,53 @@ class CommentType extends AbstractType
      * Build Form.
      *
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
+     *
      * @return void
      *
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-          'nick',
-          TextType::class,
+            'nick',
+            TextType::class,
             [
-                'label'=>'label.nick',
-                'required'=>true,
-                'attr'=>['max_length'=> 10]
-            ]);
+                'label' => 'label.nick',
+                'required' => true,
+                'attr' => ['max_length' => 10],
+            ]
+        );
         $builder->add(
-          'email',
-          EmailType::class,
+            'email',
+            EmailType::class,
             [
-                'label'=>'label.email',
-                'required'=>true,
-                'attr'=>['max_length'=> 32]
-            ]);
+                'label' => 'label.email',
+                'required' => true,
+                'attr' => ['max_length' => 32],
+            ]
+        );
         $builder->add(
-          'content',
-          TextareaType::class,
+            'content',
+            TextareaType::class,
             [
-                'label'=>'label.content',
-                'required'=>true,
-                'attr'=>['max_length'=> 100]
-            ]);
+                'label' => 'label.content',
+                'required' => true,
+                'attr' => ['max_length' => 100],
+            ]
+        );
     }
 
     /**
      * Configure options.
      *
      * @param OptionsResolver $resolver
+     *
      * @return void
      *
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class'=>Comment::class]);
+        $resolver->setDefaults(['data_class' => Comment::class]);
     }
 
     /**
@@ -79,5 +84,4 @@ class CommentType extends AbstractType
     {
         return 'Comment';
     }
-
 }

@@ -6,7 +6,6 @@
  */
 namespace App\Service;
 
-
 use App\Entity\PostCategory;
 use App\Repository\PostCategoryRepository;
 use Doctrine\ORM\NonUniqueResultException;
@@ -50,8 +49,8 @@ class PostCategoryService implements PostCategoryServiceInterface
      * Constructor.
      *
      * @param PostCategoryRepository $postCategoryRepository
-     * @param PaginatorInterface $paginator
-     * @param PostRepository $postRepository
+     * @param PaginatorInterface     $paginator
+     * @param PostRepository         $postRepository
      *
      */
     public function __construct(PostCategoryRepository $postCategoryRepository, PaginatorInterface $paginator, PostRepository $postRepository)
@@ -65,6 +64,7 @@ class PostCategoryService implements PostCategoryServiceInterface
      * Get paginated list.
      *
      * @param int $page
+     *
      * @return PaginationInterface
      *
      */
@@ -81,12 +81,13 @@ class PostCategoryService implements PostCategoryServiceInterface
      * Save.
      *
      * @param PostCategory $postCategory
+     *
      * @return void
      *
      */
     public function save(PostCategory $postCategory): void
     {
-        if(null == $postCategory->getId()) {
+        if (null == $postCategory->getId()) {
             $postCategory->setCreatedAt(new \DateTimeImmutable());
         }
 
@@ -97,6 +98,7 @@ class PostCategoryService implements PostCategoryServiceInterface
      * Delete.
      *
      * @param PostCategory $postCategory
+     *
      * @return void
      *
      */
@@ -109,6 +111,7 @@ class PostCategoryService implements PostCategoryServiceInterface
      * Find one by id.
      *
      * @param int $id
+     *
      * @return PostCategory|null
      *
      */

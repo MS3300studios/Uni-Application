@@ -47,6 +47,7 @@ class PostRepository extends ServiceEntityRepository
      * Query all.
      *
      * @param array $filters
+     *
      * @return QueryBuilder
      *
      */
@@ -65,7 +66,8 @@ class PostRepository extends ServiceEntityRepository
      * Apply filters to list.
      *
      * @param QueryBuilder $queryBuilder
-     * @param array $filters
+     * @param array        $filters
+     *
      * @return QueryBuilder
      *
      */
@@ -83,6 +85,7 @@ class PostRepository extends ServiceEntityRepository
      * Get or create query builder.
      *
      * @param QueryBuilder|null $queryBuilder
+     *
      * @return QueryBuilder
      *
      */
@@ -96,6 +99,7 @@ class PostRepository extends ServiceEntityRepository
      *
      * @param Post $entity
      * @param bool $flush
+     *
      * @return void
      *
      */
@@ -113,6 +117,7 @@ class PostRepository extends ServiceEntityRepository
      *
      * @param Post $entity
      * @param bool $flush
+     *
      * @return void
      *
      */
@@ -129,7 +134,9 @@ class PostRepository extends ServiceEntityRepository
      * Count by category.
      *
      * @param PostCategory $postCategory
+     *
      * @return int
+     *
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      *
@@ -149,6 +156,7 @@ class PostRepository extends ServiceEntityRepository
      * Save.
      *
      * @param Post $post
+     *
      * @return void
      *
      */
@@ -162,6 +170,7 @@ class PostRepository extends ServiceEntityRepository
      * Delete.
      *
      * @param Post $post
+     *
      * @return void
      *
      */

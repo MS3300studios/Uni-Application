@@ -49,12 +49,12 @@ class PostController extends AbstractController
     /**
      * Constructor.
      *
-     * @param PostServiceInterface $postService Post Service Interface
+     * @param PostServiceInterface    $postService    Post Service Interface
      * @param CommentServiceInterface $commentService
-     * @param TranslatorInterface $translator Translator
+     * @param TranslatorInterface     $translator     Translator
      *
      */
-    public function __construct(PostServiceInterface $postService, CommentServiceInterface $commentService , TranslatorInterface $translator)
+    public function __construct(PostServiceInterface $postService, CommentServiceInterface $commentService, TranslatorInterface $translator)
     {
         $this->postService = $postService;
         $this->commentService = $commentService;
@@ -65,6 +65,7 @@ class PostController extends AbstractController
      * Index action.
      *
      * @param Request $request
+     *
      * @return Response
      *
      */
@@ -100,7 +101,8 @@ class PostController extends AbstractController
      * Show action.
      *
      * @param Request $request
-     * @param Post $post
+     * @param Post    $post
+     *
      * @return Response
      *
      */
@@ -127,6 +129,7 @@ class PostController extends AbstractController
      * Create action.
      *
      * @param Request $request
+     *
      * @return Response
      *
      */
@@ -144,7 +147,7 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if($this->isGranted('ROLE_ADMIN')) {
+            if ($this->isGranted('ROLE_ADMIN')) {
                 $this->postService->save($post);
             } else {
                 $this->postService->save($post);
@@ -159,10 +162,11 @@ class PostController extends AbstractController
         }
 
         return $this->render(
-          'post/create.html.twig',
-          [
+            'post/create.html.twig',
+            [
               'form' => $form->createView(),
-          ]);
+            ]
+        );
     }
 
     /**
@@ -170,6 +174,7 @@ class PostController extends AbstractController
      *
      * @param Request $request
      * @param Post $post
+     *
      * @return Response
      *
      */
@@ -210,6 +215,7 @@ class PostController extends AbstractController
      *
      * @param Request $request
      * @param Post $post
+     *
      * @return Response
      *
      */

@@ -48,7 +48,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     /**
      * Constructor.
-     * 
+     *
      * @param UrlGeneratorInterface $urlGenerator Url generator
      */
     public function __construct(UrlGeneratorInterface $urlGenerator)
@@ -83,7 +83,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      * a UserNotFoundException when the user cannot be found).
      *
      * @param Request $request HTTP request
-     *  
+     *
      * @return Passport Passport
      *
      * @throws AuthenticationException

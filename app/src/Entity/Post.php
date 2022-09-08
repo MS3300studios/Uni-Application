@@ -32,7 +32,7 @@ class Post
     #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
 
     private ?PostCategory $postCategory = null;
-    
+
     public function getId(): ?int
     {
         return $this->id;

@@ -14,7 +14,7 @@ class BlogRepository
                 'convallis',
                 'nibh',
             ],
-            "category" => "Lifestyle"
+            "category" => "Lifestyle",
         ],
         2 => [
             'id' => 2,
@@ -25,7 +25,7 @@ class BlogRepository
                 'vestibulum',
                 'tortor',
             ],
-            "category" => "Kids"
+            "category" => "Kids",
         ],
         3 => [
             'id' => 3,
@@ -36,7 +36,7 @@ class BlogRepository
                 'consectetur',
                 'porttitor',
             ],
-            "category" => "Sport"
+            "category" => "Sport",
         ],
         4 => [
             'id' => 4,
@@ -47,7 +47,7 @@ class BlogRepository
                 'consectetur',
                 'porttitor',
             ],
-            "category" => "Sport"
+            "category" => "Sport",
         ],
         5 => [
             'id' => 5,
@@ -58,7 +58,7 @@ class BlogRepository
                 'consectetur',
                 'porttitor',
             ],
-            "category" => "Lifestyle"
+            "category" => "Lifestyle",
         ],
         6 => [
             'id' => 6,
@@ -69,7 +69,7 @@ class BlogRepository
                 'consectetur',
                 'porttitor',
             ],
-            "category" => "Kids"
+            "category" => "Kids",
         ],
     ];
 

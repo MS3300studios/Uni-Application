@@ -41,6 +41,7 @@ class CommentController extends AbstractController
      * Index action.
      *
      * @param Request $request
+     *
      * @return Response
      *
      */
@@ -52,10 +53,10 @@ class CommentController extends AbstractController
     public function index(Request $request): Response
     {
         $pagination = $this->commentService->getPaginatedList(
-          $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1)
         );
-        if($this->isGranted('ROLE_ADMIN')) {
-            return $this->render('comment/admin.index.html.twig', ['pagination'=>$pagination]);
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->render('comment/admin.index.html.twig', ['pagination' => $pagination]);
         } else {
             return $this->render('comment/index.html.twig', ['pagination' => $pagination]);
         }
@@ -65,6 +66,7 @@ class CommentController extends AbstractController
      * Show action.
      *
      * @param Comment $comment
+     *
      * @return Response
      *
      */
@@ -79,7 +81,7 @@ class CommentController extends AbstractController
     {
         return $this->render(
             'comment/show.html.twig',
-            ['comment'=>$comment]
+            ['comment' => $comment]
         );
     }
 
@@ -87,6 +89,7 @@ class CommentController extends AbstractController
      * Create action.
      *
      * @param Request $request
+     *
      * @return Response
      *
      */
@@ -103,14 +106,15 @@ class CommentController extends AbstractController
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->commentService->save($comment);
+
             return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
 
         return $this->render(
             'comment/create.html.twig',
-            ['form'=>$form->createView()]
+            ['form' => $form->createView()]
         );
     }
 
@@ -119,6 +123,7 @@ class CommentController extends AbstractController
      *
      * @param Request $request
      * @param Comment $comment
+     *
      * @return Response
      *
      */
@@ -162,6 +167,7 @@ class CommentController extends AbstractController
      *
      * @param Request $request
      * @param Comment $comment
+     *
      * @return Response
      *
      */
@@ -199,5 +205,4 @@ class CommentController extends AbstractController
             ]
         );
     }
-
 }

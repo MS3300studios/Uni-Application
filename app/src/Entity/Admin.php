@@ -67,11 +67,10 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function eraseCredentials(): void
     {
-
     }
 
     /**
-     * 
+     *
      * this function is made so that interfaces are in accord with this entity
      * it gives the email as default
      *

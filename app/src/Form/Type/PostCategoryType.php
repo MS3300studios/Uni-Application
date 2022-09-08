@@ -23,32 +23,35 @@ class PostCategoryType extends AbstractType
      * Build Form.
      *
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
+     *
      * @return void
      *
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-          'name',
-          TextType::class,
+            'name',
+            TextType::class,
             [
-                'label'=>'label.name',
-                'required'=>true,
-                'attr'=>['max_length'=> 64],
-            ]);
+                'label' => 'label.name',
+                'required' => true,
+                'attr' => ['max_length' => 64],
+            ]
+        );
     }
 
     /**
      * Configure options.
      *
      * @param OptionsResolver $resolver
+     *
      * @return void
      *
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class'=>PostCategory::class]);
+        $resolver->setDefaults(['data_class' => PostCategory::class]);
     }
 
     /**
@@ -61,5 +64,4 @@ class PostCategoryType extends AbstractType
     {
         return 'postCategory';
     }
-
 }

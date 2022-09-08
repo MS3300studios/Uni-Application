@@ -20,6 +20,7 @@ interface CommentServiceInterface
      * Get paginated list.
      *
      * @param int $page
+     *
      * @return PaginationInterface
      *
      */
@@ -29,6 +30,7 @@ interface CommentServiceInterface
      * Save.
      *
      * @param Comment $Comment
+     *
      * @return void
      *
      */
@@ -38,16 +40,18 @@ interface CommentServiceInterface
      * Delete.
      *
      * @param Comment $Comment
+     *
      * @return void
      *
      */
     public function delete(Comment $Comment): void;
-    
+
     /**
      * Find one by post id.
      *
      * @param int $page
      * @param int $postId
+     *
      * @return PaginationInterface
      *
      */

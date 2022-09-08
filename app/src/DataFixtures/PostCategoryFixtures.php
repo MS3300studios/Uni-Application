@@ -25,7 +25,7 @@ class PostCategoryFixtures extends AbstractBaseFixtures
      */
     public function loadData(): void
     {
-        $this->createMany(20, 'postCategories', function(int $i) {
+        $this->createMany(20, 'postCategories', function (int $i) {
                 $postCategory = new PostCategory();
                 $postCategory->setName($this->faker->unique()->word);
                 $postCategory->setCreatedAt(
@@ -33,8 +33,9 @@ class PostCategoryFixtures extends AbstractBaseFixtures
                         $this->faker->dateTimeBetween('-100 days', '-1 days')
                     )
                 );
+
                 return $postCategory;
-            });
+        });
 
         $this->manager->flush();
     }

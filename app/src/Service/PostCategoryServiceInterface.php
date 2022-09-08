@@ -20,6 +20,7 @@ interface PostCategoryServiceInterface
      * Get paginated list.
      *
      * @param int $page
+     *
      * @return PaginationInterface
      *
      */
@@ -29,6 +30,7 @@ interface PostCategoryServiceInterface
      * Save.
      *
      * @param PostCategory $postCategory
+     *
      * @return void
      *
      */
@@ -38,15 +40,17 @@ interface PostCategoryServiceInterface
      * Delete.
      *
      * @param PostCategory $postCategory
+     *
      * @return void
      *
      */
     public function delete(PostCategory $postCategory): void;
-    
+
     /**
      * Find one by id.
      *
      * @param int $id
+     *
      * @return PostCategory|null
      *
      */

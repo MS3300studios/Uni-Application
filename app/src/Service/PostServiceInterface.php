@@ -29,6 +29,7 @@ interface PostServiceInterface
      * Get paginated list.
      *
      * @param int $page
+     *
      * @return PaginationInterface
      *
      */
@@ -38,6 +39,7 @@ interface PostServiceInterface
      * Save.
      *
      * @param Post $post
+     *
      * @return void
      *
      */

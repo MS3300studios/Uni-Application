@@ -6,7 +6,6 @@
  */
 namespace App\Service;
 
-
 use App\Entity\Comment;
 use App\Repository\CommentRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -47,9 +46,9 @@ class CommentService implements CommentServiceInterface
     /**
      * Constructor.
      *
-     * @param CommentRepository $CommentRepository
+     * @param CommentRepository  $CommentRepository
      * @param PaginatorInterface $paginator
-     * @param PostRepository $postRepository
+     * @param PostRepository     $postRepository
      *
      */
     public function __construct(CommentRepository $CommentRepository, PaginatorInterface $paginator, PostRepository $postRepository)
@@ -63,6 +62,7 @@ class CommentService implements CommentServiceInterface
      * Get paginated list.
      *
      * @param int $page
+     *
      * @return PaginationInterface
      *
      */
@@ -79,12 +79,13 @@ class CommentService implements CommentServiceInterface
      * Save.
      *
      * @param Comment $Comment
+     *
      * @return void
      *
      */
     public function save(Comment $Comment): void
     {
-        if(null == $Comment->getId()) {
+        if (null == $Comment->getId()) {
             $Comment->setCreatedAt(new \DateTimeImmutable());
         }
 
@@ -95,6 +96,7 @@ class CommentService implements CommentServiceInterface
      * Delete.
      *
      * @param Comment $Comment
+     *
      * @return void
      *
      */
@@ -108,6 +110,7 @@ class CommentService implements CommentServiceInterface
      *
      * @param int $page
      * @param int $postId
+     *
      * @return PaginationInterface
      *
      */

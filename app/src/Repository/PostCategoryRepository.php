@@ -58,6 +58,7 @@ class PostCategoryRepository extends ServiceEntityRepository
      * Get or create query builder.
      *
      * @param QueryBuilder|null $queryBuilder
+     *
      * @return QueryBuilder
      *
      */
@@ -70,7 +71,8 @@ class PostCategoryRepository extends ServiceEntityRepository
      * Add.
      *
      * @param PostCategory $entity
-     * @param bool $flush
+     * @param bool         $flush
+     *
      * @return void
      *
      */
@@ -87,7 +89,8 @@ class PostCategoryRepository extends ServiceEntityRepository
      * Remove.
      *
      * @param PostCategory $entity
-     * @param bool $flush
+     * @param bool         $flush
+     *
      * @return void
      *
      */
@@ -104,6 +107,7 @@ class PostCategoryRepository extends ServiceEntityRepository
      * Save.
      *
      * @param PostCategory $postCategory
+     *
      * @return void
      *
      */
@@ -117,6 +121,7 @@ class PostCategoryRepository extends ServiceEntityRepository
      * Delete.
      *
      * @param PostCategory $postCategory
+     *
      * @return void
      *
      */

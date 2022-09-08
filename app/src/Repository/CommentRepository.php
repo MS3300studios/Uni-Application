@@ -58,6 +58,7 @@ class CommentRepository extends ServiceEntityRepository
      * Get or create query builder.
      *
      * @param QueryBuilder|null $queryBuilder
+     *
      * @return QueryBuilder
      *
      */
@@ -70,7 +71,8 @@ class CommentRepository extends ServiceEntityRepository
      * Add.
      *
      * @param Comment $entity
-     * @param bool $flush
+     * @param bool    $flush
+     *
      * @return void
      *
      */
@@ -87,7 +89,8 @@ class CommentRepository extends ServiceEntityRepository
      * Remove.
      *
      * @param Comment $entity
-     * @param bool $flush
+     * @param bool    $flush
+     *
      * @return void
      *
      */
@@ -104,6 +107,7 @@ class CommentRepository extends ServiceEntityRepository
      * Save.
      *
      * @param Comment $comment
+     *
      * @return void
      *
      */
@@ -117,6 +121,7 @@ class CommentRepository extends ServiceEntityRepository
      * Delete.
      *
      * @param Comment $comment
+     *
      * @return void
      *
      */
@@ -130,6 +135,7 @@ class CommentRepository extends ServiceEntityRepository
      * find many comments by post id.
      *
      * @param int $postId
+     *
      * @return QueryBuilder
      *
      */
@@ -140,6 +146,7 @@ class CommentRepository extends ServiceEntityRepository
             ->where('comment.Post = :postId')
             ->setParameter(':postId', $postId)
             ->orderBy('comment.createdAt', 'DESC');
+
         return $queryBuilder;
     }
 }

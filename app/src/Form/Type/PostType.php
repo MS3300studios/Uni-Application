@@ -26,46 +26,51 @@ class PostType extends AbstractType
      * Build form.
      *
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
+     *
      * @return void
      *
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-          'title',
+            'title',
             TextType::class,
             [
                 'label' => 'label.title',
                 'required' => 'true',
-                'attr' => ['max_length' => 255]
-            ]);
+                'attr' => ['max_length' => 255],
+            ]
+        );
         $builder->add(
-          'content',
+            'content',
             TextType::class,
             [
                 'label' => 'label.content',
                 'required' => 'true',
-                'attr' => ['max_length' => 255]
-            ]);
+                'attr' => ['max_length' => 255],
+            ]
+        );
         $builder->add(
-          'postCategory',
-          EntityType::class,
-          [
+            'postCategory',
+            EntityType::class,
+            [
               'class' => PostCategory::class,
-              'choice_label' => function($postCategory): string {
+              'choice_label' => function ($postCategory): string {
                 return $postCategory->getName();
               },
               'label' => 'label.category',
               'placeholder' => 'label.none',
               'required' => 'true',
-          ]);
+            ]
+        );
     }
 
     /**
      * Configure Options.
      *
      * @param OptionsResolver $resolver
+     *
      * @return void
      *
      */
@@ -84,5 +89,4 @@ class PostType extends AbstractType
     {
         return 'post';
     }
-
 }
