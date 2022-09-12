@@ -50,7 +50,6 @@ class CommentController extends AbstractController
         name: 'comment_create',
         methods: 'get|post'
     )]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function create(Request $request, Post $post): Response
     {
         $comment = new Comment();
