@@ -218,6 +218,10 @@
         <source>message.accepted_successfully</source>
         <target>Zaakceptowano pomyślnie!</target>
       </trans-unit>
+      <trans-unit id="message.success">
+        <source>message.success</source>
+        <target>sukces</target>
+      </trans-unit>
       <trans-unit id="title.post_delete">
         <source>title.post_delete</source>
         <target>Usuń post</target>

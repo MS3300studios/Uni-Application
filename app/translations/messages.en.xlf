@@ -258,6 +258,10 @@
         <source>message.changed_successfully</source>
         <target>Post edited successfully</target>
       </trans-unit>
+      <trans-unit id="message.success">
+        <source>message.success</source>
+        <target>success</target>
+      </trans-unit>
       <trans-unit id="action.back">
         <source>action.back</source>
         <target>Go back</target>

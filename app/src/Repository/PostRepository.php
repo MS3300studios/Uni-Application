@@ -59,7 +59,6 @@ class PostRepository extends ServiceEntityRepository
             ->orderBy('post.createdAt', 'DESC');
 
         return $this->applyFiltersToList($queryBuilder, $filters);
-        // return $queryBuilder;
     }
 
     /**

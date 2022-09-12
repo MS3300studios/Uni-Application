@@ -173,7 +173,7 @@ class PostController extends AbstractController
      * Edit action.
      *
      * @param Request $request
-     * @param Post $post
+     * @param Post    $post
      *
      * @return Response
      *
@@ -214,7 +214,7 @@ class PostController extends AbstractController
      * Delete action.
      *
      * @param Request $request
-     * @param Post $post
+     * @param Post    $post
      *
      * @return Response
      *

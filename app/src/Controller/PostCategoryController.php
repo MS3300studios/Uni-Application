@@ -120,7 +120,7 @@ class PostCategoryController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request $request
+     * @param Request      $request
      * @param PostCategory $postCategory
      *
      * @return Response
@@ -164,7 +164,7 @@ class PostCategoryController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request $request
+     * @param Request      $request
      * @param postCategory $postCategory
      *
      * @return Response
