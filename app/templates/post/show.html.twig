@@ -29,7 +29,7 @@
                         <div class="clockIconContainer">
                             <i class="fa fa-clock-o"></i>
                         </div>
-                        <p class="marginLeftSmall postId">{{ post.createdAt|date('Y/m/d') }}</p>
+                        <p class="marginLeftSmall postId">{{ post.createdAt|date('d/m/y') }}</p>
                     </div>
                     <div class="postInfoContainerElement">
                         <p>{{ 'label.id'|trans }}:</p>
@@ -66,7 +66,7 @@
                                 <div class="clockIconContainer">
                                     <i class="fa fa-clock-o"></i>
                                 </div>
-                                <p class="commentDate">{{ singleComment.createdAt|date('Y/m/d') }}</p>
+                                <p class="commentDate">{{ singleComment.createdAt|date('d/m/y') }}</p>
                             </div>
                         </div>
                         <p class="commentContent">{{ singleComment.content }}</p>
@@ -74,8 +74,14 @@
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <a href="{{ url("comment_delete", {id: singleComment.id}) }}">
                                 <div class="deleteCommentContainer">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <i class="fa fa-trash" aria-hidden="true" style="color: red;"></i>
                                     <p>{{ 'info.deleteComment'|trans }}</p>
+                                </div>
+                            </a>
+                            <a href="{{ url("comment_edit", {id: singleComment.id}) }}">
+                                <div class="editCommentContainer" style="color: navy;">
+                                    <i class="fas fa-edit"></i>
+                                    <p>{{ 'title.comment_edit'|trans }}</p>
                                 </div>
                             </a>
                             {% endif %}

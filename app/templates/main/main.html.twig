@@ -10,7 +10,7 @@ Welcome to main page
 
 {% block body %}
 <article>
-    <a href="/post"><h1>{{"label.go_to_all_posts"|trans}}</h1></a>
-    <a href="/postCategory"><h1>{{"label.go_to_all_categories"|trans}}</h1></a>
+    <a href="{{url('post_index')}}"><h1>{{"label.go_to_all_posts"|trans}}</h1></a>
+    <a href="{{url('postCategory_index')}}"><h1>{{"label.go_to_all_categories"|trans}}</h1></a>
 </article>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
@@ -20,17 +21,19 @@ class Post
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $title;
+    #[Assert\NotBlank]
+    private $title = null;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $content;
-
+    #[Assert\NotBlank]
+    private $content = null;
+    
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
-
+    
     #[ORM\ManyToOne(targetEntity: PostCategory::class, fetch: 'EXTRA_LAZY')]
+    #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
-
     private ?PostCategory $postCategory = null;
 
     public function getId(): ?int

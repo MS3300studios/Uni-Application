@@ -13,7 +13,7 @@
             <dt>{{ 'label.name'|trans }}</dt>
             <dd>{{  postCategory.name }}</dd>
             <dt>{{ 'label.createdAt'|trans }}</dt>
-            <dd>{{ postCategory.createdAt|date('Y/m/d') }}</dd>
+            <dd>{{ postCategory.createdAt|date('d/m/y') }}</dd>
         </dl>
         <p>
             <a href="{{ url('postCategory_index') }}" title="{{ 'action.back_to_list'|trans }}">

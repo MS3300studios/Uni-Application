@@ -129,7 +129,7 @@
     background-color: lightcoral;
 }
 
-.deleteCommentContainer > p{
+.deleteCommentContainer, .editCommentContainer > p{
     margin: 0;
     margin-left: 5px;    
     color: black;
@@ -137,12 +137,25 @@
     font-weight: 550;
 }
 
+.editCommentContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: navy;
+    background-color: unset;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 20px;
+    transition: all 0.3s ease-out;
+}
+
+.editCommentContainer:hover{
+    background-color: lightgreen;
+}
+
 .centeringDiv{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.commentsHeaderContainer{
-    
 }

@@ -166,9 +166,21 @@
         <source>info.deletePost</source>
         <target>usuń post</target>
       </trans-unit>
+      <trans-unit id="title.comment_edit">
+        <source>title.comment_edit</source>
+        <target>Edytuj komentarz</target>
+      </trans-unit>
+      <trans-unit id="title.user_edit">
+        <source>title.user_edit</source>
+        <target>Edytuj dane admina</target>
+      </trans-unit>
+      <trans-unit id="title.RegisterNewAdmin">
+        <source>title.RegisterNewAdmin</source>
+        <target>Zarejestruj nowego admina</target>
+      </trans-unit>
       <trans-unit id="title.account_register">
         <source>title.account_register</source>
-        <target>rejestracja</target>
+        <target>Zarejestruj nowego admina</target>
       </trans-unit>
       <trans-unit id="action.login">
         <source>action.login</source>

@@ -1,17 +1,4 @@
 <?php
-//
-//namespace App\Service;
-//
-//use App\Entity\Post;
-//use Knp\Component\Pager\Pagination\PaginationInterface;
-//
-//interface PostServiceInterface
-//{
-//    public function getAll(int $page): PaginationInterface;
-//
-//    public function save(Post $Post): void;
-//    public function delete(Post $Post): void;
-//}
 
 namespace App\Service;
 

@@ -87,7 +87,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * Register.
+     * Registering a new admin account (can be done only by a logged in account)
      *
      * @param Request                     $request
      * @param UserPasswordHasherInterface $passwordHasher
@@ -95,6 +95,7 @@ class SecurityController extends AbstractController
      * @return Response
      */
     #[Route('/register', name: 'app_register')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function register(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(
@@ -126,7 +127,7 @@ class SecurityController extends AbstractController
                 $this->translator->trans('message.success')
             );
 
-            return $this->redirect($this->generateUrl('app_login'));
+            return $this->redirect($this->generateUrl('hello_index'));
         }
 
         return $this->render('security/registration.html.twig', [
@@ -136,7 +137,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * Edit action.
+     * Edit admin data, all entity params are editable.
      *
      * @param Request                     $request
      * @param User                        $user
@@ -144,7 +145,7 @@ class SecurityController extends AbstractController
      *
      * @return Response
      */
-    #[Route('/{id}/account_edit', name: 'app_account_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[Route('/{id}/account_edit', name: 'app_account_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
@@ -152,7 +153,7 @@ class SecurityController extends AbstractController
             UserType::class,
             $user,
             [
-                'method' => 'PUT',
+                'method' => 'POST',
                 'action' => $this->generateUrl('app_account_edit', ['id' => $user->getId()]),
             ]
         );

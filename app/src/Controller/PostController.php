@@ -2,11 +2,11 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\Type\PostType;
 use App\Service\CommentServiceInterface;
 use App\Service\PostServiceInterface;
 use DateTimeImmutable;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -138,9 +138,9 @@ class PostController extends AbstractController
         name: 'post_create',
         methods: 'get|post'
     )]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function create(Request $request): Response
     {
-
         $post = new Post();
         $post->setCreatedAt(new DateTimeImmutable());
         $form = $this->createForm(PostType::class, $post, ['action' => $this->generateUrl('post_create'), ]);
@@ -184,7 +184,7 @@ class PostController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function edit(Request $request, Post $post): Response
     {
         $form = $this->createForm(PostType::class, $post, [
@@ -225,7 +225,7 @@ class PostController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function delete(Request $request, Post $post): Response
     {
         $form = $this->createForm(FormType::class, $post, [

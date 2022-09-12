@@ -38,54 +38,6 @@ class CommentController extends AbstractController
     }
 
     /**
-     * Index action.
-     *
-     * @param Request $request
-     *
-     * @return Response
-     *
-     */
-
-    #[Route(
-        name: 'comment_index',
-        methods: 'get'
-    )]
-    public function index(Request $request): Response
-    {
-        $pagination = $this->commentService->getPaginatedList(
-            $request->query->getInt('page', 1)
-        );
-        if ($this->isGranted('ROLE_ADMIN')) {
-            return $this->render('comment/admin.index.html.twig', ['pagination' => $pagination]);
-        } else {
-            return $this->render('comment/index.html.twig', ['pagination' => $pagination]);
-        }
-    }
-
-    /**
-     * Show action.
-     *
-     * @param Comment $comment
-     *
-     * @return Response
-     *
-     */
-    #[Route(
-        '/{id}',
-        name: 'comment_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'get'
-    )]
-    //#[IsGranted('ROLE_ADMIN')]
-    public function show(Comment $comment): Response
-    {
-        return $this->render(
-            'comment/show.html.twig',
-            ['comment' => $comment]
-        );
-    }
-
-    /**
      * Create action.
      *
      * @param Request $request
@@ -98,7 +50,7 @@ class CommentController extends AbstractController
         name: 'comment_create',
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function create(Request $request, Post $post): Response
     {
         $comment = new Comment();
@@ -133,7 +85,7 @@ class CommentController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function edit(Request $request, Comment $comment): Response
     {
         $form = $this->createForm(CommentType::class, $comment, [
@@ -177,7 +129,7 @@ class CommentController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function delete(Request $request, Comment $comment): Response
     {
         $form = $this->createForm(FormType::class, $comment, [

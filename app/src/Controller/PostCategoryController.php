@@ -72,7 +72,6 @@ class PostCategoryController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'get'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
     public function show(PostCategory $postCategory): Response
     {
         return $this->render(
@@ -94,7 +93,7 @@ class PostCategoryController extends AbstractController
         name: 'postCategory_create',
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function create(Request $request): Response
     {
         $postCategory = new PostCategory();
@@ -133,7 +132,7 @@ class PostCategoryController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function edit(Request $request, PostCategory $postCategory): Response
     {
         $form = $this->createForm(PostCategoryType::class, $postCategory, [
@@ -177,7 +176,7 @@ class PostCategoryController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'get|post'
     )]
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function delete(Request $request, PostCategory $postCategory): Response
     {
         $form = $this->createForm(FormType::class, $postCategory, [

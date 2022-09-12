@@ -253,3 +253,27 @@ li {
     margin: 10px;
     margin-top: 220px;
 }
+
+.invalid-feedback, .d-block{
+    position: absolute;
+    top: 15px;
+    background-color: lightcoral;
+    padding: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 550;
+    color: white;
+    animation: fade-out;
+    animation-delay: 5s;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes fade-out {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}

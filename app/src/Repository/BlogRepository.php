@@ -84,17 +84,4 @@ class BlogRepository
             ? $this->data[$id]
             : null;
     }
-
-    // public function findByCategory(string $category): ?array
-    // {
-    //     function returnMatched($blog){
-    //         if($blog->category == $category) return true;
-    //         return false;
-    //     }
-    //     $sortedBlogs = array_filter(returnMatched(), $this->data);
-
-    //     return count($this->data) && isset($sortedBlogs)
-    //         ? $sortedBlogs
-    //         : null;
-    // }
 }
