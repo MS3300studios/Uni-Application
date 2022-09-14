@@ -67,7 +67,7 @@ class Comment
     #[ORM\ManyToOne(targetEntity: Post::class, fetch: 'EXTRA_LAZY')]
     #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
-    private ?Post $post = null;
+    private ?Post $Post = null;
 
     /**
      * Getter for id.
@@ -166,7 +166,7 @@ class Comment
      */
     public function getPost(): ?Post
     {
-        return $this->post;
+        return $this->Post;
     }
 
     /**
@@ -176,6 +176,6 @@ class Comment
      */
     public function setPost(?Post $post): void
     {
-        $this->post = $post;
+        $this->Post = $post;
     }
 }
