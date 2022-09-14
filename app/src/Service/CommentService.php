@@ -1,75 +1,53 @@
 <?php
 /**
- *
  * CommentService.
- *
  */
+
 namespace App\Service;
 
 use App\Entity\Comment;
 use App\Repository\CommentRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use App\Repository\PostRepository;
 
 /**
- *
  * Class CommentService.
- *
  */
 class CommentService implements CommentServiceInterface
 {
     /**
      * CommentRepository.
-     *
-     * @var CommentRepository
-     *
      */
-    private CommentRepository $CommentRepository;
+    private CommentRepository $commentRepository;
 
     /**
      * PaginatorInterface.
-     *
-     * @var PaginatorInterface
-     *
      */
     private PaginatorInterface $paginator;
 
     /**
-     * PostRepository.
-     *
-     * @var PostRepository
-     *
-     */
-    private PostRepository $postRepository;
-
-    /**
      * Constructor.
      *
-     * @param CommentRepository  $CommentRepository
-     * @param PaginatorInterface $paginator
-     * @param PostRepository     $postRepository
-     *
+     * @param CommentRepository  $commentRepository comment Repository
+     * @param PaginatorInterface $paginator         paginator
      */
-    public function __construct(CommentRepository $CommentRepository, PaginatorInterface $paginator, PostRepository $postRepository)
+    public function __construct(CommentRepository $commentRepository, PaginatorInterface $paginator)
     {
         $this->paginator = $paginator;
-        $this->CommentRepository = $CommentRepository;
-        $this->postRepository = $postRepository;
+        $this->commentRepository = $commentRepository;
     }
 
     /**
      * Get paginated list.
      *
-     * @param int $page
+     * @param int $page page
      *
-     * @return PaginationInterface
-     *
+     * @return PaginationInterface Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->CommentRepository->queryAll(),
+            $this->commentRepository->queryAll(),
             $page,
             CommentRepository::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -78,10 +56,7 @@ class CommentService implements CommentServiceInterface
     /**
      * Save.
      *
-     * @param Comment $Comment
-     *
-     * @return void
-     *
+     * @param Comment $Comment Comment
      */
     public function save(Comment $Comment): void
     {
@@ -89,35 +64,31 @@ class CommentService implements CommentServiceInterface
             $Comment->setCreatedAt(new \DateTimeImmutable());
         }
 
-        $this->CommentRepository->save($Comment);
+        $this->commentRepository->save($Comment);
     }
 
     /**
      * Delete.
      *
-     * @param Comment $Comment
-     *
-     * @return void
-     *
+     * @param Comment $Comment Comment
      */
     public function delete(Comment $Comment): void
     {
-        $this->CommentRepository->delete($Comment);
+        $this->commentRepository->delete($Comment);
     }
 
     /**
      * Find many comments by post id.
      *
-     * @param int $page
-     * @param int $postId
+     * @param int $page   page
+     * @param int $postId id of post
      *
-     * @return PaginationInterface
-     *
+     * @return PaginationInterface Paginated list
      */
     public function findManyByPostId(int $page, int $postId): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->CommentRepository->findManyByPostId($postId),
+            $this->commentRepository->findManyByPostId($postId),
             $page,
             CommentRepository::PAGINATOR_ITEMS_PER_PAGE
         );

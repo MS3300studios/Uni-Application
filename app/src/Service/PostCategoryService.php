@@ -1,72 +1,48 @@
 <?php
 /**
- *
  * PostCategoryService.
- *
  */
+
 namespace App\Service;
 
 use App\Entity\PostCategory;
 use App\Repository\PostCategoryRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use App\Repository\PostRepository;
 
 /**
- *
  * Class PostCategoryService.
- *
  */
 class PostCategoryService implements PostCategoryServiceInterface
 {
     /**
      * PostCategoryRepository.
-     *
-     * @var PostCategoryRepository
-     *
      */
     private PostCategoryRepository $postCategoryRepository;
 
     /**
      * PaginatorInterface.
-     *
-     * @var PaginatorInterface
-     *
      */
     private PaginatorInterface $paginator;
 
     /**
-     * PostRepository.
-     *
-     * @var PostRepository
-     *
-     */
-    private PostRepository $postRepository;
-
-    /**
      * Constructor.
      *
-     * @param PostCategoryRepository $postCategoryRepository
-     * @param PaginatorInterface     $paginator
-     * @param PostRepository         $postRepository
-     *
+     * @param PostCategoryRepository $postCategoryRepository postCategoryRepository
+     * @param PaginatorInterface     $paginator              paginator
      */
-    public function __construct(PostCategoryRepository $postCategoryRepository, PaginatorInterface $paginator, PostRepository $postRepository)
+    public function __construct(PostCategoryRepository $postCategoryRepository, PaginatorInterface $paginator)
     {
         $this->paginator = $paginator;
         $this->postCategoryRepository = $postCategoryRepository;
-        $this->postRepository = $postRepository;
     }
 
     /**
      * Get paginated list.
      *
-     * @param int $page
+     * @param int $page page
      *
-     * @return PaginationInterface
-     *
+     * @return PaginationInterface Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface
     {
@@ -80,10 +56,9 @@ class PostCategoryService implements PostCategoryServiceInterface
     /**
      * Save.
      *
-     * @param PostCategory $postCategory
+     * @param PostCategory $postCategory postCategory
      *
-     * @return void
-     *
+     * @return void void
      */
     public function save(PostCategory $postCategory): void
     {
@@ -97,10 +72,9 @@ class PostCategoryService implements PostCategoryServiceInterface
     /**
      * Delete.
      *
-     * @param PostCategory $postCategory
+     * @param PostCategory $postCategory postCategory
      *
-     * @return void
-     *
+     * @return void void
      */
     public function delete(PostCategory $postCategory): void
     {
@@ -110,10 +84,9 @@ class PostCategoryService implements PostCategoryServiceInterface
     /**
      * Find one by id.
      *
-     * @param int $id
+     * @param int $id id
      *
-     * @return PostCategory|null
-     *
+     * @return PostCategory|null returns either a Post Category, or null if found nothing by given ID
      */
     public function findOneById(int $id): ?PostCategory
     {

@@ -1,4 +1,9 @@
 <?php
+/*
+ *
+ * Main Controller
+ *
+ */
 
 namespace App\Controller;
 
@@ -8,7 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    #[Route('/', name: "hello_index", methods: "GET")]
+    /**
+     * Index action, this is the main, home route.
+     *
+     * @return Response Response
+     */
+    #[Route('/', name: 'hello_index', methods: 'GET')]
     public function index(): Response
     {
         return $this->render(

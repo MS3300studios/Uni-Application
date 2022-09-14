@@ -1,73 +1,58 @@
 <?php
+/*
+ *
+ * Post Controller
+ *
+ */
+
 namespace App\Controller;
 
 use App\Entity\Post;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\Type\PostType;
 use App\Service\CommentServiceInterface;
 use App\Service\PostServiceInterface;
 use DateTimeImmutable;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- *
  * Class PostController.
- *
  */
 #[Route('/post')]
 class PostController extends AbstractController
 {
     /**
      * PostServiceInterface.
-     *
-     * @var PostServiceInterface
-     *
      */
     private PostServiceInterface $postService;
 
     /**
      * CommentServiceInterface.
-     *
-     * @var CommentServiceInterface
-     *
      */
     private CommentServiceInterface $commentService;
-
-    /**
-     * TranslatorInterface.
-     *
-     * @var TranslatorInterface
-     *
-     */
-    private TranslatorInterface $translator;
 
     /**
      * Constructor.
      *
      * @param PostServiceInterface    $postService    Post Service Interface
-     * @param CommentServiceInterface $commentService
-     * @param TranslatorInterface     $translator     Translator
-     *
+     * @param CommentServiceInterface $commentService Comment Service
      */
-    public function __construct(PostServiceInterface $postService, CommentServiceInterface $commentService, TranslatorInterface $translator)
+    public function __construct(PostServiceInterface $postService, CommentServiceInterface $commentService)
     {
         $this->postService = $postService;
         $this->commentService = $commentService;
-        $this->translator = $translator;
     }
 
     /**
      * Index action.
      *
-     * @param Request $request
+     * @param Request $request request
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         name: 'post_index',
@@ -81,14 +66,16 @@ class PostController extends AbstractController
             $filters
         );
 
-        if ($this->isGranted('ROLE_ADMIN')) {
-            return $this->render('post/index.html.twig', ['pagination' => $pagination]);
-        } else {
-            return $this->render('post/index.html.twig', ['pagination' => $pagination]);
-        }
+        return $this->render('post/index.html.twig', ['pagination' => $pagination]);
     }
 
-
+    /**
+     * Gets filters from request query and returns prepared array of filters.
+     *
+     * @param Request $request request
+     *
+     * @return Response HTTP Response
+     */
     public function getFilters(Request $request): array
     {
         $filters = [];
@@ -100,11 +87,10 @@ class PostController extends AbstractController
     /**
      * Show action.
      *
-     * @param Request $request
-     * @param Post    $post
+     * @param Request $request request
+     * @param Post    $post    post
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}',
@@ -128,10 +114,9 @@ class PostController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request $request
+     * @param Request $request request
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/create',
@@ -143,20 +128,11 @@ class PostController extends AbstractController
     {
         $post = new Post();
         $post->setCreatedAt(new DateTimeImmutable());
-        $form = $this->createForm(PostType::class, $post, ['action' => $this->generateUrl('post_create'), ]);
+        $form = $this->createForm(PostType::class, $post, ['action' => $this->generateUrl('post_create')]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($this->isGranted('ROLE_ADMIN')) {
-                $this->postService->save($post);
-            } else {
-                $this->postService->save($post);
-            }
-
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.created_successfully')
-            );
+            $this->postService->save($post);
 
             return $this->redirectToRoute('post_index');
         }
@@ -172,11 +148,10 @@ class PostController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request $request
-     * @param Post    $post
+     * @param Request $request request
+     * @param Post    $post    post
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}/edit',
@@ -213,11 +188,10 @@ class PostController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request $request
-     * @param Post    $post
+     * @param Request $request request
+     * @param Post    $post    post
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}/delete',

@@ -1,9 +1,8 @@
 <?php
 /**
- *
  * PostFixtures.
- *
  */
+
 namespace App\DataFixtures;
 
 use App\Entity\Post;
@@ -11,17 +10,12 @@ use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
- *
  * Class PostFixtures.
- *
  */
 class PostFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load Data.
-     *
-     * @return void
-     *
      */
     public function loadData(): void
     {
@@ -40,7 +34,6 @@ class PostFixtures extends AbstractBaseFixtures implements DependentFixtureInter
 
             $post->setContent($this->faker->text(150));
 
-
             $postCategory = $this->getRandomReference('postCategories');
             $post->setPostCategory($postCategory);
 
@@ -53,8 +46,7 @@ class PostFixtures extends AbstractBaseFixtures implements DependentFixtureInter
     /**
      * Get Dependencies.
      *
-     * @return string[]
-     *
+     * @return string[] returns dependencies array
      */
     public function getDependencies(): array
     {

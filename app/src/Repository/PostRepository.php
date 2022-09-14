@@ -1,10 +1,9 @@
 <?php
 
 /**
- *
  * PostRepository.
- *
  */
+
 namespace App\Repository;
 
 use App\Entity\Post;
@@ -26,9 +25,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class PostRepository extends ServiceEntityRepository
 {
     /**
-     *
      * Items per page.
-     *
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
@@ -36,7 +33,6 @@ class PostRepository extends ServiceEntityRepository
      * Constructor.
      *
      * @param ManagerRegistry $registry Manager Registry
-     *
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -46,10 +42,9 @@ class PostRepository extends ServiceEntityRepository
     /**
      * Query all.
      *
-     * @param array $filters
+     * @param array $filters filters
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder QueryBuilder
      */
     public function queryAll(array $filters): QueryBuilder
     {
@@ -64,11 +59,10 @@ class PostRepository extends ServiceEntityRepository
     /**
      * Apply filters to list.
      *
-     * @param QueryBuilder $queryBuilder
-     * @param array        $filters
+     * @param QueryBuilder $queryBuilder queryBuilder
+     * @param array        $filters      array of filters by which the list of posts will be filtered
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder QueryBuilder
      */
     private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
     {
@@ -83,10 +77,9 @@ class PostRepository extends ServiceEntityRepository
     /**
      * Get or create query builder.
      *
-     * @param QueryBuilder|null $queryBuilder
+     * @param QueryBuilder|null $queryBuilder queryBuilder or, if null, creates a new queryBuilder
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder QueryBuilder
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
@@ -96,11 +89,8 @@ class PostRepository extends ServiceEntityRepository
     /**
      * Add.
      *
-     * @param Post $entity
-     * @param bool $flush
-     *
-     * @return void
-     *
+     * @param Post $entity post entity
+     * @param bool $flush  flush
      */
     public function add(Post $entity, bool $flush = false): void
     {
@@ -114,11 +104,8 @@ class PostRepository extends ServiceEntityRepository
     /**
      * Remove.
      *
-     * @param Post $entity
-     * @param bool $flush
-     *
-     * @return void
-     *
+     * @param Post $entity post entity
+     * @param bool $flush  flush default option is false
      */
     public function remove(Post $entity, bool $flush = false): void
     {
@@ -130,34 +117,9 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * Count by category.
-     *
-     * @param PostCategory $postCategory
-     *
-     * @return int
-     *
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     *
-     */
-    public function countByCategory(PostCategory $postCategory): int
-    {
-        $qrBldr = $this->getOrCreateQueryBuilder();
-
-        return $qrBldr->select($qrBldr->expr()->countDistinct('post.id'))
-            ->where('post.postCategory = :postCategory')
-            ->setParameter(':postCategory', $postCategory)
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
-
-    /**
      * Save.
      *
-     * @param Post $post
-     *
-     * @return void
-     *
+     * @param Post $post posts
      */
     public function save(Post $post): void
     {
@@ -168,10 +130,7 @@ class PostRepository extends ServiceEntityRepository
     /**
      * Delete.
      *
-     * @param Post $post
-     *
-     * @return void
-     *
+     * @param Post $post post
      */
     public function delete(Post $post): void
     {

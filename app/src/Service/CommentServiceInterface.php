@@ -1,37 +1,31 @@
 <?php
 /**
- *
- * CommentServiceInterface,
- *
+ * CommentServiceInterface,.
  */
+
 namespace App\Service;
 
 use App\Entity\Comment;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
- *
  * Interface CommentServiceInterface.
- *
  */
 interface CommentServiceInterface
 {
     /**
      * Get paginated list.
      *
-     * @param int $page
+     * @param int $page page
      *
-     * @return PaginationInterface
-     *
+     * @return PaginationInterface Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
     /**
      * Save.
      *
-     * @param Comment $Comment
-     *
-     * @return void
+     * @param Comment $Comment Comment
      *
      */
     public function save(Comment $Comment): void;
@@ -39,9 +33,7 @@ interface CommentServiceInterface
     /**
      * Delete.
      *
-     * @param Comment $Comment
-     *
-     * @return void
+     * @param Comment $Comment Comment
      *
      */
     public function delete(Comment $Comment): void;
@@ -49,11 +41,10 @@ interface CommentServiceInterface
     /**
      * Find one by post id.
      *
-     * @param int $page
-     * @param int $postId
+     * @param int $page   page
+     * @param int $postId postId
      *
-     * @return PaginationInterface
-     *
+     * @return PaginationInterface Paginated list
      */
     public function findManyByPostId(int $page, int $postId): ?PaginationInterface;
 }

@@ -1,9 +1,8 @@
 <?php
 /**
- *
- * PostCategoryType
- *
+ * PostCategoryType.
  */
+
 namespace App\Form\Type;
 
 use App\Entity\PostCategory;
@@ -13,20 +12,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- *
  * Class PostCategoryType.
- *
  */
 class PostCategoryType extends AbstractType
 {
     /**
      * Build Form.
      *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     *
-     * @return void
-     *
+     * @param FormBuilderInterface $builder builder
+     * @param array                $options options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -44,10 +38,7 @@ class PostCategoryType extends AbstractType
     /**
      * Configure options.
      *
-     * @param OptionsResolver $resolver
-     *
-     * @return void
-     *
+     * @param OptionsResolver $resolver resolver
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -57,8 +48,7 @@ class PostCategoryType extends AbstractType
     /**
      * Get block prefix.
      *
-     * @return string
-     *
+     * @return string returns block prefix
      */
     public function getBlockPrefix(): string
     {

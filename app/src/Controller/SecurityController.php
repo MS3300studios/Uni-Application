@@ -42,9 +42,9 @@ class SecurityController extends AbstractController
     /**
      * Constructor.
      *
-     * @param UserServiceInterface        $userService
-     * @param TranslatorInterface         $translator
-     * @param UserPasswordHasherInterface $passwordHasher
+     * @param UserServiceInterface        $userService    userService
+     * @param TranslatorInterface         $translator     translator
+     * @param UserPasswordHasherInterface $passwordHasher passwordHasher
      */
     public function __construct(UserServiceInterface $userService, TranslatorInterface $translator, UserPasswordHasherInterface $passwordHasher)
     {
@@ -56,9 +56,9 @@ class SecurityController extends AbstractController
     /**
      * Login.
      *
-     * @param AuthenticationUtils $authenticationUtils
+     * @param AuthenticationUtils $authenticationUtils authenticationUtils
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -77,8 +77,6 @@ class SecurityController extends AbstractController
 
     /**
      * Logout.
-     *
-     * @return void
      */
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
@@ -87,12 +85,12 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * Registering a new admin account (can be done only by a logged in account)
+     * Registering a new admin account (can be done only by a logged in account).
      *
-     * @param Request                     $request
-     * @param UserPasswordHasherInterface $passwordHasher
+     * @param Request                     $request        request
+     * @param UserPasswordHasherInterface $passwordHasher passwordHasher
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route('/register', name: 'app_register')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
@@ -139,11 +137,11 @@ class SecurityController extends AbstractController
     /**
      * Edit admin data, all entity params are editable.
      *
-     * @param Request                     $request
-     * @param User                        $user
-     * @param UserPasswordHasherInterface $passwordHasher
+     * @param Request                     $request        request
+     * @param User                        $user           user
+     * @param UserPasswordHasherInterface $passwordHasher passwordHasher
      *
-     * @return Response
+     * @return Response HTTP Response
      */
     #[Route('/{id}/account_edit', name: 'app_account_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]

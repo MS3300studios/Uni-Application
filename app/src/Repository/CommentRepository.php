@@ -1,9 +1,8 @@
 <?php
 /**
- *
  * CommentRepository.
- *
  */
+
 namespace App\Repository;
 
 use App\Entity\Comment;
@@ -23,11 +22,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CommentRepository extends ServiceEntityRepository
 {
-
     /**
-     *
-     * Items per page
-     *
+     * Items per page.
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
@@ -35,7 +31,6 @@ class CommentRepository extends ServiceEntityRepository
      * Constructor.
      *
      * @param ManagerRegistry $registry Manager Registry
-     *
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -45,8 +40,7 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Query all.
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder QueryBuilder
      */
     public function queryAll(): QueryBuilder
     {
@@ -57,10 +51,9 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Get or create query builder.
      *
-     * @param QueryBuilder|null $queryBuilder
+     * @param QueryBuilder|null $queryBuilder queryBuilder
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder QueryBuilder
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
@@ -70,8 +63,8 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Add.
      *
-     * @param Comment $entity
-     * @param bool    $flush
+     * @param Comment $entity entity
+     * @param bool    $flush flush
      *
      * @return void
      *
@@ -88,8 +81,8 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Remove.
      *
-     * @param Comment $entity
-     * @param bool    $flush
+     * @param Comment $entity entity
+     * @param bool    $flush flush
      *
      * @return void
      *
@@ -106,7 +99,7 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Save.
      *
-     * @param Comment $comment
+     * @param Comment $comment comment
      *
      * @return void
      *
@@ -120,7 +113,7 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Delete.
      *
-     * @param Comment $comment
+     * @param Comment $comment comment
      *
      * @return void
      *
@@ -134,10 +127,9 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * find many comments by post id.
      *
-     * @param int $postId
+     * @param int $postId post id
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder QueryBuilder
      */
     public function findManyByPostId(int $postId): QueryBuilder
     {

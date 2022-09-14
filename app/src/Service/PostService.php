@@ -1,4 +1,9 @@
 <?php
+
+/**
+ *  Post Service.
+ */
+
 namespace App\Service;
 
 use App\Entity\Post;
@@ -7,33 +12,22 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- *
  * Class PostService.
- *
  */
 class PostService implements PostServiceInterface
 {
     /**
      * PostRepository.
-     *
-     * @var PostRepository
-     *
      */
     private PostRepository $postRepository;
 
     /**
      * PaginatorInterface.
-     *
-     * @var PaginatorInterface
-     *
      */
     private PaginatorInterface $paginator;
 
     /**
      * PostCategoryInterface.
-     *
-     * @var PostCategoryServiceInterface
-     *
      */
     private PostCategoryServiceInterface $postCategoryService;
 
@@ -43,7 +37,6 @@ class PostService implements PostServiceInterface
      * @param PostRepository               $postRepository      Post repository
      * @param PaginatorInterface           $paginator           Paginator interface
      * @param PostCategoryServiceInterface $postCategoryService Post category service interface
-     *
      */
     public function __construct(PostRepository $postRepository, PaginatorInterface $paginator, PostCategoryServiceInterface $postCategoryService)
     {
@@ -55,11 +48,10 @@ class PostService implements PostServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int   $page
-     * @param array $filters
+     * @param int   $page    page
+     * @param array $filters filters
      *
-     * @return PaginationInterface
-     *
+     * @return PaginationInterface Paginated list
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
@@ -75,9 +67,7 @@ class PostService implements PostServiceInterface
     /**
      * Save.
      *
-     * @param Post $post
-     *
-     * @return void
+     * @param Post $post post
      *
      */
     public function save(Post $post): void
@@ -88,9 +78,7 @@ class PostService implements PostServiceInterface
     /**
      * Delete.
      *
-     * @param Post $post
-     *
-     * @return void
+     * @param Post $post post
      *
      */
     public function delete(Post $post): void
@@ -103,8 +91,7 @@ class PostService implements PostServiceInterface
      *
      * @param array $filters
      *
-     * @return array
-     *
+     * @return array returns filtered results or an empty array if filtering didn't yield any result
      */
     private function prepareFilters(array $filters): array
     {

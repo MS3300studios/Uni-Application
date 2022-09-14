@@ -1,22 +1,19 @@
 <?php
 /**
- *
- * PostCategory
- *
+ * PostCategory.
  */
+
 namespace App\Entity;
 
 use App\Repository\PostCategoryRepository;
-use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- *
  * Class PostCategory.
- *
  */
 #[ORM\Entity(repositoryClass: PostCategoryRepository::class)]
 #[ORM\Table(name: 'postCategories')]
@@ -26,9 +23,6 @@ class PostCategory
 {
     /**
      * Primary Key.
-     *
-     * @var int|null
-     *
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -37,9 +31,6 @@ class PostCategory
 
     /**
      * Created At.
-     *
-     * @var DateTimeImmutable|null
-     *
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(DateTimeImmutable::class)]
@@ -48,9 +39,6 @@ class PostCategory
 
     /**
      * Name.
-     *
-     * @var string|null
-     *
      */
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
@@ -64,8 +52,7 @@ class PostCategory
     /**
      * Getter for Id.
      *
-     * @return int|null
-     *
+     * @return int|null id
      */
     public function getId(): ?int
     {
@@ -75,8 +62,7 @@ class PostCategory
     /**
      * Getter for Created At.
      *
-     * @return DateTimeImmutable|null
-     *
+     * @return DateTimeImmutable|null Created At
      */
     public function getCreatedAt(): ?DateTimeImmutable
     {
@@ -86,10 +72,7 @@ class PostCategory
     /**
      * Setter for Created At.
      *
-     * @param DateTimeImmutable $createdAt
-     *
-     * @return void
-     *
+     * @param DateTimeImmutable $createdAt created at
      */
     public function setCreatedAt(DateTimeImmutable $createdAt): void
     {
@@ -99,8 +82,7 @@ class PostCategory
     /**
      * Getter for Name.
      *
-     * @return string|null
-     *
+     * @return string|null name
      */
     public function getName(): ?string
     {
@@ -110,10 +92,7 @@ class PostCategory
     /**
      * Setter For Name.
      *
-     * @param string $name
-     *
-     * @return void
-     *
+     * @param string $name name
      */
     public function setName(string $name): void
     {

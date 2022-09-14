@@ -164,7 +164,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
      *
-     * @return string|null
+     * @return string|null salt
      */
     public function getSalt(): ?string
     {
@@ -183,7 +183,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Getter for nickname.
      *
-     * @return string|null
+     * @return string|null nickname
      */
     public function getNickname(): ?string
     {
@@ -193,9 +193,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Setter for nickname.
      *
-     * @param string $nickname
+     * @param string $nickname nickname
      *
-     * @return $this
+     * @return $this user entity
      */
     public function setNickname(string $nickname): self
     {

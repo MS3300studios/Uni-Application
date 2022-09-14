@@ -1,9 +1,8 @@
 <?php
 /**
- *
  * PostCategoryRepository.
- *
  */
+
 namespace App\Repository;
 
 use App\Entity\PostCategory;
@@ -23,11 +22,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PostCategoryRepository extends ServiceEntityRepository
 {
-
     /**
-     *
-     * Items per page
-     *
+     * Items per page.
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
@@ -35,7 +31,6 @@ class PostCategoryRepository extends ServiceEntityRepository
      * Constructor.
      *
      * @param ManagerRegistry $registry Manager Registry
-     *
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -45,8 +40,7 @@ class PostCategoryRepository extends ServiceEntityRepository
     /**
      * Query all.
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder queryBuilder
      */
     public function queryAll(): QueryBuilder
     {
@@ -57,10 +51,9 @@ class PostCategoryRepository extends ServiceEntityRepository
     /**
      * Get or create query builder.
      *
-     * @param QueryBuilder|null $queryBuilder
+     * @param QueryBuilder|null $queryBuilder queryBuilder
      *
-     * @return QueryBuilder
-     *
+     * @return QueryBuilder queryBuilder
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
@@ -70,11 +63,8 @@ class PostCategoryRepository extends ServiceEntityRepository
     /**
      * Add.
      *
-     * @param PostCategory $entity
-     * @param bool         $flush
-     *
-     * @return void
-     *
+     * @param PostCategory $entity entity
+     * @param bool         $flush  flush
      */
     public function add(PostCategory $entity, bool $flush = false): void
     {
@@ -88,11 +78,8 @@ class PostCategoryRepository extends ServiceEntityRepository
     /**
      * Remove.
      *
-     * @param PostCategory $entity
-     * @param bool         $flush
-     *
-     * @return void
-     *
+     * @param PostCategory $entity entity
+     * @param bool         $flush  flush
      */
     public function remove(PostCategory $entity, bool $flush = false): void
     {
@@ -106,10 +93,7 @@ class PostCategoryRepository extends ServiceEntityRepository
     /**
      * Save.
      *
-     * @param PostCategory $postCategory
-     *
-     * @return void
-     *
+     * @param PostCategory $postCategory postCategory
      */
     public function save(PostCategory $postCategory): void
     {
@@ -120,10 +104,7 @@ class PostCategoryRepository extends ServiceEntityRepository
     /**
      * Delete.
      *
-     * @param PostCategory $postCategory
-     *
-     * @return void
-     *
+     * @param PostCategory $postCategory postCategory
      */
     public function delete(PostCategory $postCategory): void
     {

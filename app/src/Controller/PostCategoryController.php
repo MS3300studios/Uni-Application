@@ -1,9 +1,8 @@
 <?php
 /**
- *
  * PostCategory Controller.
- *
  */
+
 namespace App\Controller;
 
 use App\Entity\PostCategory;
@@ -15,36 +14,35 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- *
  * Class PostCategoryController.
- *
  */
 #[Route('/postCategory')]
 class PostCategoryController extends AbstractController
 {
-
+    /**
+     * PostCategoryServiceInterface.
+     */
     private PostCategoryServiceInterface $postCategoryService;
 
-    private TranslatorInterface $translator;
-
-    public function __construct(PostCategoryServiceInterface $postCategoryService, TranslatorInterface $translator)
+    /**
+     * Constructor.
+     *
+     * @param PostCategoryServiceInterface $postCategoryService PostCategory Service Interface
+     */
+    public function __construct(PostCategoryServiceInterface $postCategoryService)
     {
         $this->postCategoryService = $postCategoryService;
-        $this->translator = $translator;
     }
 
     /**
      * Index action.
      *
-     * @param Request $request
+     * @param Request $request request
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
-
     #[Route(
         name: 'postCategory_index',
         methods: 'get'
@@ -61,10 +59,9 @@ class PostCategoryController extends AbstractController
     /**
      * Show action.
      *
-     * @param PostCategory $postCategory
+     * @param PostCategory $postCategory postCategory
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}',
@@ -83,10 +80,9 @@ class PostCategoryController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request $request
+     * @param Request $request request
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/create',
@@ -103,11 +99,6 @@ class PostCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->postCategoryService->save($postCategory);
 
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.created_successfully')
-            );
-
             return $this->redirectToRoute('postCategory_index');
         }
 
@@ -120,11 +111,10 @@ class PostCategoryController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request      $request
-     * @param PostCategory $postCategory
+     * @param Request      $request      request
+     * @param PostCategory $postCategory postCategory
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}/edit',
@@ -144,11 +134,6 @@ class PostCategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->postCategoryService->save($postCategory);
 
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.edited_successfully')
-            );
-
             return $this->redirectToRoute('postCategory_index');
         }
 
@@ -164,11 +149,10 @@ class PostCategoryController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request      $request
-     * @param postCategory $postCategory
+     * @param Request      $request      request
+     * @param postCategory $postCategory postCategory
      *
-     * @return Response
-     *
+     * @return Response HTTP Response
      */
     #[Route(
         '/{id}/delete',
@@ -187,11 +171,6 @@ class PostCategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->postCategoryService->delete($postCategory);
-
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.deleted_successfully')
-            );
 
             return $this->redirectToRoute('postCategory_index');
         }

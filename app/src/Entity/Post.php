@@ -14,7 +14,6 @@ class Post
      * Primary Key.
      *
      * @var int|null Id
-     *
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,7 +24,6 @@ class Post
      * Title.
      *
      * @var string|null title
-     *
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
@@ -35,7 +33,6 @@ class Post
      * Content.
      *
      * @var string|null content
-     *
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
@@ -45,7 +42,6 @@ class Post
      * CreatedAt.
      *
      * @var DateTimeImmutable|null CreatedAt
-     *
      */
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
@@ -54,14 +50,13 @@ class Post
      * PostCategory.
      *
      * @var PostCategory|null post category
-     *
      */
     #[ORM\ManyToOne(targetEntity: PostCategory::class, fetch: 'EXTRA_LAZY')]
     #[Assert\NotBlank]
-    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?PostCategory $postCategory = null;
 
-     /**
+    /**
      * Getter for id.
      *
      * @return int|null Id
@@ -71,7 +66,7 @@ class Post
         return $this->id;
     }
 
-     /**
+    /**
      * Getter for title.
      *
      * @return string|null title
@@ -81,7 +76,7 @@ class Post
         return $this->title;
     }
 
-     /**
+    /**
      * Setter for title.
      *
      * @param string|null $title title
@@ -116,7 +111,7 @@ class Post
      *
      * @return DateTimeImmutable|null createAt
      */
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -126,10 +121,11 @@ class Post
      *
      * @param DateTimeImmutable|null $createAt createAt
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt)
+    public function setCreatedAt(DateTimeImmutable $createdAt)
     {
         $this->createdAt = $createdAt;
     }
+
     /**
      * Getter for post category.
      *
@@ -139,6 +135,7 @@ class Post
     {
         return $this->postCategory;
     }
+
     /**
      * Setter for post category.
      *

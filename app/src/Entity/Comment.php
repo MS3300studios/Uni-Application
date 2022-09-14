@@ -7,6 +7,9 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Comment.
+ */
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {
@@ -14,7 +17,6 @@ class Comment
      * Primary Key.
      *
      * @var int|null id
-     *
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,7 +27,6 @@ class Comment
      * Email.
      *
      * @var string|null email
-     *
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
@@ -36,7 +37,6 @@ class Comment
      * nick.
      *
      * @var string|null nick
-     *
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
@@ -46,7 +46,6 @@ class Comment
      * content.
      *
      * @var string|null content
-     *
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
@@ -56,7 +55,6 @@ class Comment
      * createdAt.
      *
      * @var DateTimeImmutable|null createdAt
-     *
      */
     #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
@@ -65,12 +63,11 @@ class Comment
      * Post.
      *
      * @var Post|null Post
-     *
-     */    
+     */
     #[ORM\ManyToOne(targetEntity: Post::class, fetch: 'EXTRA_LAZY')]
     #[Assert\NotBlank]
-    #[ORM\JoinColumn(nullable: true, onDelete: "CASCADE")]
-    private ?Post $Post = null;
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
+    private ?Post $post = null;
 
     /**
      * Getter for id.
@@ -147,7 +144,7 @@ class Comment
      *
      * @return DateTimeImmutable|null createdAt
      */
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -157,7 +154,7 @@ class Comment
      *
      * @param DateTimeImmutable $createdAt createdAt
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt)
+    public function setCreatedAt(DateTimeImmutable $createdAt)
     {
         $this->createdAt = $createdAt;
     }
@@ -169,7 +166,7 @@ class Comment
      */
     public function getPost(): ?Post
     {
-        return $this->Post;
+        return $this->post;
     }
 
     /**
@@ -179,6 +176,6 @@ class Comment
      */
     public function setPost(?Post $post): void
     {
-        $this->Post = $post;
+        $this->post = $post;
     }
 }
