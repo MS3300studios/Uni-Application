@@ -24,14 +24,14 @@ interface PostServiceInterface
     /**
      * Save.
      *
-     * @param Post $post
+     * @param Post $post post
      */
     public function save(Post $post): void;
 
     /**
      * Delete.
      *
-     * @param Post $post
+     * @param Post $post post
      */
     public function delete(Post $post): void;
 }
