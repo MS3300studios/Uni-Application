@@ -110,8 +110,8 @@ class CommentRepository extends ServiceEntityRepository
     public function findManyByPostId(int $postId): QueryBuilder
     {
         $queryBuilder = $this->getOrCreateQueryBuilder()
-            ->select('partial comment.{id, nick, email, content, Post, createdAt}')
-            ->where('comment.Post = :postId')
+            ->select('partial comment.{id, nick, email, content, post, createdAt}')
+            ->where('comment.post = :postId')
             ->setParameter(':postId', $postId)
             ->orderBy('comment.createdAt', 'DESC');
 

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Comment Entity
+ */
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
@@ -62,12 +64,12 @@ class Comment
     /**
      * Post.
      *
-     * @var Post|null Post
+     * @var Post|null post
      */
     #[ORM\ManyToOne(targetEntity: Post::class, fetch: 'EXTRA_LAZY')]
     #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
-    private ?Post $Post = null;
+    private ?Post $post = null;
 
     /**
      * Getter for id.
@@ -166,7 +168,7 @@ class Comment
      */
     public function getPost(): ?Post
     {
-        return $this->Post;
+        return $this->post;
     }
 
     /**
@@ -176,6 +178,6 @@ class Comment
      */
     public function setPost(?Post $post): void
     {
-        $this->Post = $post;
+        $this->post = $post;
     }
 }
