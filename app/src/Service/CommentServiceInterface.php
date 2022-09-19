@@ -25,18 +25,16 @@ interface CommentServiceInterface
     /**
      * Save.
      *
-     * @param Comment $Comment Comment
-     *
+     * @param Comment $comment Comment
      */
-    public function save(Comment $Comment): void;
+    public function save(Comment $comment): void;
 
     /**
      * Delete.
      *
-     * @param Comment $Comment Comment
-     *
+     * @param Comment $comment Comment
      */
-    public function delete(Comment $Comment): void;
+    public function delete(Comment $comment): void;
 
     /**
      * Find one by post id.

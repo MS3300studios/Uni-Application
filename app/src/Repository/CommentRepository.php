@@ -49,25 +49,10 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder queryBuilder
-     *
-     * @return QueryBuilder QueryBuilder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('comment');
-    }
-
-    /**
      * Add.
      *
      * @param Comment $entity entity
-     * @param bool    $flush flush
-     *
-     * @return void
-     *
+     * @param bool    $flush  flush
      */
     public function add(Comment $entity, bool $flush = false): void
     {
@@ -82,10 +67,7 @@ class CommentRepository extends ServiceEntityRepository
      * Remove.
      *
      * @param Comment $entity entity
-     * @param bool    $flush flush
-     *
-     * @return void
-     *
+     * @param bool    $flush  flush
      */
     public function remove(Comment $entity, bool $flush = false): void
     {
@@ -100,9 +82,6 @@ class CommentRepository extends ServiceEntityRepository
      * Save.
      *
      * @param Comment $comment comment
-     *
-     * @return void
-     *
      */
     public function save(Comment $comment): void
     {
@@ -114,9 +93,6 @@ class CommentRepository extends ServiceEntityRepository
      * Delete.
      *
      * @param Comment $comment comment
-     *
-     * @return void
-     *
      */
     public function delete(Comment $comment): void
     {
@@ -140,5 +116,17 @@ class CommentRepository extends ServiceEntityRepository
             ->orderBy('comment.createdAt', 'DESC');
 
         return $queryBuilder;
+    }
+
+    /**
+     * Get or create query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder queryBuilder
+     *
+     * @return QueryBuilder QueryBuilder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('comment');
     }
 }

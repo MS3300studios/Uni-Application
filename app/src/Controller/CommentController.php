@@ -41,6 +41,7 @@ class CommentController extends AbstractController
      * Create action.
      *
      * @param Request $request request
+     * @param Post    $post    post
      *
      * @return Response HTTP Response
      */

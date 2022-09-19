@@ -56,25 +56,25 @@ class CommentService implements CommentServiceInterface
     /**
      * Save.
      *
-     * @param Comment $Comment Comment
+     * @param Comment $comment comment
      */
-    public function save(Comment $Comment): void
+    public function save(Comment $comment): void
     {
-        if (null == $Comment->getId()) {
-            $Comment->setCreatedAt(new \DateTimeImmutable());
+        if (null === $comment->getId()) {
+            $comment->setCreatedAt(new \DateTimeImmutable());
         }
 
-        $this->commentRepository->save($Comment);
+        $this->commentRepository->save($comment);
     }
 
     /**
      * Delete.
      *
-     * @param Comment $Comment Comment
+     * @param Comment $comment Comment
      */
-    public function delete(Comment $Comment): void
+    public function delete(Comment $comment): void
     {
-        $this->commentRepository->delete($Comment);
+        $this->commentRepository->delete($comment);
     }
 
     /**

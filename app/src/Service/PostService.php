@@ -68,7 +68,6 @@ class PostService implements PostServiceInterface
      * Save.
      *
      * @param Post $post post
-     *
      */
     public function save(Post $post): void
     {
@@ -79,7 +78,6 @@ class PostService implements PostServiceInterface
      * Delete.
      *
      * @param Post $post post
-     *
      */
     public function delete(Post $post): void
     {
@@ -89,7 +87,7 @@ class PostService implements PostServiceInterface
     /**
      * Prepare filters.
      *
-     * @param array $filters
+     * @param array $filters filters
      *
      * @return array returns filtered results or an empty array if filtering didn't yield any result
      */

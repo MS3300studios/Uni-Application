@@ -62,7 +62,7 @@ class PostCategoryService implements PostCategoryServiceInterface
      */
     public function save(PostCategory $postCategory): void
     {
-        if (null == $postCategory->getId()) {
+        if (null === $postCategory->getId()) {
             $postCategory->setCreatedAt(new \DateTimeImmutable());
         }
 

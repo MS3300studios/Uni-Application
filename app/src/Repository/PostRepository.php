@@ -57,36 +57,6 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * Apply filters to list.
-     *
-     * @param QueryBuilder $queryBuilder queryBuilder
-     * @param array        $filters      array of filters by which the list of posts will be filtered
-     *
-     * @return QueryBuilder QueryBuilder
-     */
-    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
-    {
-        if (isset($filters['postCategory']) && $filters['postCategory'] instanceof PostCategory) {
-            $queryBuilder->andWhere('postCategory = :postCategory')
-                ->setParameter('postCategory', $filters['postCategory']);
-        }
-
-        return $queryBuilder;
-    }
-
-    /**
-     * Get or create query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder queryBuilder or, if null, creates a new queryBuilder
-     *
-     * @return QueryBuilder QueryBuilder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('post');
-    }
-
-    /**
      * Add.
      *
      * @param Post $entity post entity
@@ -136,5 +106,35 @@ class PostRepository extends ServiceEntityRepository
     {
         $this->_em->remove($post);
         $this->_em->flush();
+    }
+
+    /**
+     * Apply filters to list.
+     *
+     * @param QueryBuilder $queryBuilder queryBuilder
+     * @param array        $filters      array of filters by which the list of posts will be filtered
+     *
+     * @return QueryBuilder QueryBuilder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['postCategory']) && $filters['postCategory'] instanceof PostCategory) {
+            $queryBuilder->andWhere('postCategory = :postCategory')
+                ->setParameter('postCategory', $filters['postCategory']);
+        }
+
+        return $queryBuilder;
+    }
+
+    /**
+     * Get or create query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder queryBuilder or, if null, creates a new queryBuilder
+     *
+     * @return QueryBuilder QueryBuilder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('post');
     }
 }

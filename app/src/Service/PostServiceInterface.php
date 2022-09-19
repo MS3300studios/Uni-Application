@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * PostServiceInterface.
+ */
 namespace App\Service;
 
 use App\Entity\Post;
@@ -24,7 +26,12 @@ interface PostServiceInterface
      *
      * @param Post $post
      */
-    public function save(Post $ad): void;
+    public function save(Post $post): void;
 
+    /**
+     * Delete.
+     *
+     * @param Post $post
+     */
     public function delete(Post $post): void;
 }

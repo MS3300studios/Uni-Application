@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Post entity
+ */
 namespace App\Entity;
 
 use App\Repository\PostRepository;
@@ -7,6 +9,9 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * class Post
+ */
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
 {
@@ -109,7 +114,7 @@ class Post
     /**
      * Getter for createdAt.
      *
-     * @return DateTimeImmutable|null createAt
+     * @return DateTimeImmutable|null createdAt
      */
     public function getCreatedAt(): ?DateTimeImmutable
     {
@@ -119,7 +124,7 @@ class Post
     /**
      * Setter for createdAt.
      *
-     * @param DateTimeImmutable|null $createAt createAt
+     * @param DateTimeImmutable|null $createdAt createAt
      */
     public function setCreatedAt(DateTimeImmutable $createdAt)
     {

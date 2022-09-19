@@ -49,18 +49,6 @@ class PostCategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder queryBuilder
-     *
-     * @return QueryBuilder queryBuilder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('postCategory');
-    }
-
-    /**
      * Add.
      *
      * @param PostCategory $entity entity
@@ -110,5 +98,17 @@ class PostCategoryRepository extends ServiceEntityRepository
     {
         $this->_em->remove($postCategory);
         $this->_em->flush();
+    }
+
+    /**
+     * Get or create query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder queryBuilder
+     *
+     * @return QueryBuilder queryBuilder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('postCategory');
     }
 }
